@@ -6,15 +6,23 @@
 
   "description": "Puts the hostname of the tab in the title",
 
+  "applications": {
+    "gecko": {
+      "id": "{b8842ade-9efd-4461-84bd-2106e91854fe}"
+    }
+  },
+
   "content_scripts": [
     {
       "matches": ["*://*/*"],
-      "js": ["hostname.js"],
+      "js": ["storage-wrap.js", "hostname.js"],
       "run_at": "document_end"
     }
   ],
   "options_ui": {
-    "page": "options.html"
+    "page": "options.html",
+    "browser_style": true,
+    "open_in_tab": false
   },
   "permissions": [
      "tabs", "*://*/*", "storage"
